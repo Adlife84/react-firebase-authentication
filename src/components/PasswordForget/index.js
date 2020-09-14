@@ -48,6 +48,8 @@ class PasswordForgetFormBase extends Component {
     const isInvalid = email === '';
  
     return (
+      <>
+      <h3>Reset a password</h3>
       <form onSubmit={this.onSubmit}>
         <input
           name="email"
@@ -62,6 +64,7 @@ class PasswordForgetFormBase extends Component {
  
         {error && <p>{error.message}</p>}
       </form>
+      </>
     );
   }
 }
