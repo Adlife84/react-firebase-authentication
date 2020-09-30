@@ -1,9 +1,15 @@
 import React from 'react';
 
-const ZipCode = () => (
+const SiteItem = (props) => (  
   <div>
-    <h1>Account</h1>
+    {console.log(props.id)} {/*Check what are in props*/}
+
+    <a href={props.link} target="_blank">{props.link}</a>
+    <button type="submit" onClick={() => props.onRemove(props.id)} >Delete</button>
+    <button type="submit" onClick={props.onEdit}>Edit</button>
   </div>
 );
 
-export default ZipCode;
+
+
+export default SiteItem;
