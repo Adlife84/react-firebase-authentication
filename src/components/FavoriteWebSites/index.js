@@ -11,27 +11,32 @@ class FavoriteWebSites extends Component {
         {
           name: 'MyPortfolioSite',
           link: 'https://www.andreykomolov.com',
-          id: 1
+          id: 1,
+          isFavorite: false
         },
         {
           name: 'Facebook',
           link: 'https://www.facebook.com',
-          id: 2
+          id: 2,
+          isFavorite: false
         },
         {
           name: 'Instagram',
           link: 'https://www.instagram.com',
-          id: 3
+          id: 3,
+          isFavorite: false
         },
         {
           name: 'Yandex',
           link: 'https://www.yandex.com',
-          id: 4
+          id: 4,
+          isFavorite: false
         },
         {
           name: 'Google',
           link: 'https://www.google.com',
-          id: 5
+          id: 5,
+          isFavorite: false
         }
       ]
     };
@@ -39,6 +44,15 @@ class FavoriteWebSites extends Component {
 
   idPlayer = this.state.links.length;
   
+  isFavorite = (id) => {
+    console.log(id);
+    this.setState(prevState => {
+      return {
+        links: prevState.links.filter(link => link.id == id)
+      };
+    });
+
+  }
 
   onAddSite = (url) => {
     console.log('Hi from addSite');
@@ -49,7 +63,8 @@ class FavoriteWebSites extends Component {
         let newSite = {
             name: '',
             link: url,
-            id: this.idPlayer += 1
+            id: this.idPlayer += 1,
+            isFavorite: false
         };
 
         this.setState(prevState => ({
@@ -96,6 +111,7 @@ class FavoriteWebSites extends Component {
             link={site.link}
             onRemove={this.onRemove}
             onEdit={this.onEdit}
+            isFavorite={this.isFavorite}
           />)}
 
         <br></br>

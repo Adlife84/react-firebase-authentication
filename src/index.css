@@ -11,3 +11,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* ICONS */
+
+svg {
+  width: 28px;
+  height: 19px;
+  margin-right: 5px;
+  fill: #F0F0F0;
+}
+
+.is-high-score {
+  fill: #FFC657;
+  animation: grow 0.35s ease-in-out;
+  transform-origin: 50% 50%;
+}
