@@ -44,11 +44,12 @@ class FavoriteWebSites extends Component {
 
   idPlayer = this.state.links.length;
   
-  isFavorite = (id) => {
+  onFavorite = (id) => {
     console.log(id);
     this.setState(prevState => {
       return {
-        links: prevState.links.filter(link => link.id == id)
+        links: prevState.links.filter(link => link.id == id),
+        isFavorite: true
       };
     });
 
@@ -91,10 +92,11 @@ class FavoriteWebSites extends Component {
 
 
   };
-
+  
   onEdit = (id) => {
     console.log('Hi from Edit!');
   };
+
 
   render() {
    
@@ -109,9 +111,10 @@ class FavoriteWebSites extends Component {
             key={site.id}
             id={site.id}
             link={site.link}
-            onRemove={site.onRemove}
-            onEdit={site.onEdit}
             isFavorite={site.isFavorite}
+            onRemove={this.onRemove}
+            onEdit={this.onEdit}
+            onFavorite={this.onFavorite}
           />)}
 
         <br></br>
