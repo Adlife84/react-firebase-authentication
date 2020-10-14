@@ -12,7 +12,7 @@ class FavoriteWebSites extends Component {
           name: 'MyPortfolioSite',
           link: 'https://www.andreykomolov.com',
           id: 1,
-          isFavorite: false
+          isFavorite: true
         },
         {
           name: 'Facebook',
@@ -109,9 +109,9 @@ class FavoriteWebSites extends Component {
             key={site.id}
             id={site.id}
             link={site.link}
-            onRemove={this.onRemove}
-            onEdit={this.onEdit}
-            isFavorite={this.isFavorite}
+            onRemove={site.onRemove}
+            onEdit={site.onEdit}
+            isFavorite={site.isFavorite}
           />)}
 
         <br></br>
