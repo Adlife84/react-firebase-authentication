@@ -12,7 +12,7 @@ class FavoriteWebSites extends Component {
           name: 'MyPortfolioSite',
           link: 'https://www.andreykomolov.com',
           id: 1,
-          isFavorite: false
+          isFavorite: true
         },
         {
           name: 'Facebook',
@@ -44,7 +44,7 @@ class FavoriteWebSites extends Component {
 
   idPlayer = this.state.links.length;
   
-  isFavorite = (id) => {
+  onFavorite = (id) => {
     console.log(id);
     this.setState(prevState => {
       return {
@@ -92,10 +92,11 @@ class FavoriteWebSites extends Component {
 
 
   };
-
+  
   onEdit = (id) => {
     console.log('Hi from Edit!');
   };
+
 
   render() {
    
@@ -110,9 +111,10 @@ class FavoriteWebSites extends Component {
             key={site.id}
             id={site.id}
             link={site.link}
+            isFavorite={site.isFavorite}
             onRemove={this.onRemove}
             onEdit={this.onEdit}
-            isFavorite={this.isFavorite}
+            onFavorite={this.onFavorite}
           />)}
 
         <br></br>
