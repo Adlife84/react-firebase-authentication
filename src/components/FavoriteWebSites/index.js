@@ -30,13 +30,13 @@ class FavoriteWebSites extends Component {
           name: 'Yandex',
           link: 'https://www.yandex.com',
           id: 4,
-          isFavorite: false
+          isFavorite: true
         },
         {
           name: 'Google',
           link: 'https://www.google.com',
           id: 5,
-          isFavorite: false
+          isFavorite: true
         }
       ]
     };
@@ -48,7 +48,8 @@ class FavoriteWebSites extends Component {
     console.log(id);
     this.setState(prevState => {
       return {
-        links: prevState.links.filter(link => link.id == id)
+        links: prevState.links.filter(link => link.id == id),
+        isFavorite: true
       };
     });
 

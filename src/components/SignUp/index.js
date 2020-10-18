@@ -4,6 +4,7 @@ import { compose } from 'recompose';
 
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
+
  
 const SignUpPage = () => (
   <div>
@@ -15,6 +16,7 @@ const SignUpPage = () => (
 const INITIAL_STATE = {
   username: '',
   email: '',
+  zipcode: '',
   passwordOne: '',
   passwordTwo: '',
   error: null,
@@ -28,7 +30,7 @@ class SignUpFormBase extends Component {
   }
  
   onSubmit = event => {
-    const { username, email, passwordOne } = this.state;
+    const { username, email, zipcode, passwordOne } = this.state;
  
     this.props.firebase
       .doCreateUserWithEmailAndPassword(email, passwordOne)
@@ -39,6 +41,7 @@ class SignUpFormBase extends Component {
           .set({
             username,
             email,
+            zipcode
           });
       })
       .then(authUser => {
@@ -61,22 +64,24 @@ class SignUpFormBase extends Component {
     const {
       username,
       email,
+      zipcode,
       passwordOne,
       passwordTwo,
       error,
     } = this.state;
 
     // Validation for empty inputs The user is only allowed to sign up if both passwords are the same, and if the username, email and at least one password are filled with a string. This is password confirmation in a common sign up process.
-    
     const isInvalid =
     passwordOne !== passwordTwo ||
     passwordOne === '' ||
     email === '' ||
+    zipcode === '' ||
     username === '';
 
 
     return (
       <form onSubmit={this.onSubmit}>
+        <label for="username">Name</label>
         <input
           name="username"
           value={username}
@@ -84,6 +89,7 @@ class SignUpFormBase extends Component {
           type="text"
           placeholder="Full Name"
         />
+        <label for="email">Email</label>
         <input
           name="email"
           value={email}
@@ -91,6 +97,15 @@ class SignUpFormBase extends Component {
           type="text"
           placeholder="Email Address"
         />
+        <label for="zipcode">ZipCode</label>
+        <input
+          name="zipcode"
+          value={zipcode}
+          onChange={this.onChange}
+          type="text"
+          placeholder="Enter ZipCode"
+        />
+        <label for="zipcode">Password</label>
         <input
           name="passwordOne"
           value={passwordOne}
@@ -98,6 +113,7 @@ class SignUpFormBase extends Component {
           type="password"
           placeholder="Password"
         />
+        <label for="">Confirm Password</label>
         <input
           name="passwordTwo"
           value={passwordTwo}

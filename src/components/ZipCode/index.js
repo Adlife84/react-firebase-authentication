@@ -2,7 +2,7 @@ import React from 'react';
 
 const ZipCode = () => (
   <> 
-      <h3>Change a ZipCode</h3>
+      <h3>Add a ZipCode</h3>
       <form>
         <input
           name="ZipCode"
@@ -10,7 +10,7 @@ const ZipCode = () => (
           placeholder="ZipCode"
         />
         <button type="submit">
-          Change ZipCode
+          Add ZipCode
         </button>
       </form>
       </>
